@@ -1,0 +1,170 @@
+{
+    "indent": "\t",
+    "wrapper": "{0[requirements]}{0[prototypes]}int main(int argc, char** argv) {{\n{0[main]}\n\treturn 0;\n}}{0[functions]}",
+    "extension": ".c",
+    "comment": "/* {} */",
+    "identifier": {
+        "wrapper": "#{{{}}}",
+        "separator": ";;"
+    },
+    "verify": {
+        "compile": "/usr/bin/gcc -Wall -Werror -Wno-unused-variable \"{}\" -o \"{}\"",
+        "execute": "./{} {}",
+        "separator": ", ",
+        "id": {
+            "start": "printf(\"[\");\n",
+            "prepend": "printf(\"{\\n\");\n",
+            "print": {
+                "wrapper": "printf(\"{}\", {});\n",
+                "separator": ", "
+            },
+            "append": "printf(\"\\n}\");",
+            "separator": "printf(\", \");\n",
+            "end": "printf(\"]\");"
+        }
+    },
+    "result": {
+        "before": "/* Print result */\n",
+        "print": {
+            "wrapper": "printf(\"{}\\n\", {});\n",
+            "separator": ", "
+        }
+    },
+    "dereference": "*",
+    "addressing": "&",
+    "type": [
+        {
+            "name": "int",
+            "item": {
+                "result": ["{0.name}: %d", "{0.dereference}"],
+                "verify": ["\\\"{0.name}\\\": %d", "{0.dereference}"]
+            }
+        },
+        {
+            "name": "char",
+            "item": {
+                "result": ["{0.name}: %d", "{0.dereference}"],
+                "verify": ["\\\"{0.name}\\\": %d", "{0.dereference}"]
+            }
+        },
+        {
+            "name": "float",
+            "item": {
+                "result": ["{0.name}: %f", "{0.dereference}"],
+                "verify": ["\\\"{0.name}\\\": %f", "{0.dereference}"]
+            }
+        },
+        {
+            "name": "double",
+            "item": {
+                "result": ["{0.name}: %f", "{0.dereference}"],
+                "verify": ["\\\"{0.name}\\\": %f", "{0.dereference}"]
+            }
+        }
+    ],
+    "operation": {
+        "parantheses": "({})",
+        "assignment": "{} = {};"
+    },
+    "format": {
+        "Initialize": {
+            "requires": ["#include <stdio.h>"],
+            "code": {
+                "2": "{} {};",
+                "3": "{} {} = {};"
+            }
+        },
+        "Result": {
+            "requires": ["#include <stdio.h>"]
+        },
+        "Call": {
+            "requires": ["#include <stdio.h>"],
+            "call": "{};",
+            "assign": "{} = {};"
+        },
+        "Equal": {
+            "requires": ["#include <stdio.h>"],
+            "code": "{} == {}"
+        },
+        "NotEqual": {
+            "requires": ["#include <stdio.h>"],
+            "code": "{} != {}"
+        },
+        "LessThan": {
+            "requires": ["#include <stdio.h>"],
+            "code": "{} < {}"
+        },
+        "LessThanOrEqual": {
+            "requires": ["#include <stdio.h>"],
+            "code": "{} <= {}"
+        },
+        "GreaterThan": {
+            "requires": ["#include <stdio.h>"],
+            "code": "{} > {}"
+        },
+        "GreaterThanOrEqual": {
+            "requires": ["#include <stdio.h>"],
+            "code": "{} >= {}"
+        },
+        "Addition": {
+            "requires": ["#include <stdio.h>"],
+            "code": "{} + {}"
+        },
+        "BitwiseAnd": {
+            "requires": ["#include <stdio.h>"],
+            "code": "{} & {}"
+        },
+        "Division": {
+            "requires": ["#include <stdio.h>"],
+            "code": "{} / {}"
+        },
+        "LeftShift": {
+            "requires": ["#include <stdio.h>"],
+            "code": "{} << {}"
+        },
+        "Modulo": {
+            "requires": ["#include <stdio.h>"],
+            "code": "{} % {}"
+        },
+        "Multiplication": {
+            "requires": ["#include <stdio.h>"],
+            "code": "{} * {}"
+        },
+        "BitwiseOr": {
+            "requires": ["#include <stdio.h>"],
+            "code": "{} | {}"
+        },
+        "RightShift": {
+            "requires": ["#include <stdio.h>"],
+            "code": "{} >> {}"
+        },
+        "Subtraction": {
+            "requires": ["#include <stdio.h>"],
+            "code": "{} - {}"
+        },
+        "BitwiseXor": {
+            "requires": ["#include <stdio.h>"],
+            "code": "{} ^ {}"
+        }
+    },
+    "function": {
+        "call": {
+            "format": "{0.name}({1})",
+            "argument": ["{0.from_}", ", "]
+        },
+        "top": "{0.type_str} {0.name}({1}) {{",
+        "bottom": "}\n",
+        "prototype": "{0.type_str} {0.name}({1});",
+        "argument": ["{0.type_str} {0.name}", ", "],
+        "noneType": "void",
+        "return": "return {0.name};"
+    },
+    "conditional": {
+        "top": {
+            "if": "if ({}) {{",
+            "elif": "}} else if ({}) {{",
+            "else": "}} else {{"
+        },
+        "bottom": "}\n"
+    }
+}
