@@ -24,26 +24,26 @@ bitop = shift + bitwise
 special = ['Modulo']
 
 # Import all submodules as classes
-from operations.basic import BasicOperation
-from operations.binary import BinaryOperation
-from operations.init import Initialize
-from operations.result import Result
-from operations.call import Call
+from .basic import BasicOperation
+from .binary import BinaryOperation
+from .init import Initialize
+from .result import Result
+from .call import Call
 
-from operations.eq_ import Equal
-from operations.ne_ import NotEqual
-from operations.lt_ import LessThan
-from operations.le_ import LessThanOrEqual
-from operations.gt_ import GreaterThan
-from operations.ge_ import GreaterThanOrEqual
+from .eq_ import Equal
+from .ne_ import NotEqual
+from .lt_ import LessThan
+from .le_ import LessThanOrEqual
+from .gt_ import GreaterThan
+from .ge_ import GreaterThanOrEqual
 
-from operations.add_ import Addition
-from operations.and_ import BitwiseAnd
-from operations.div_ import Division
-from operations.lshift_ import LeftShift
-from operations.mod_ import Modulo
-from operations.mul_ import Multiplication
-from operations.or_ import BitwiseOr
-from operations.rshift_ import RightShift
-from operations.sub_ import Subtraction
-from operations.xor_ import BitwiseXor
+from .add_ import Addition
+from .and_ import BitwiseAnd
+from .div_ import Division
+from .lshift_ import LeftShift
+from .mod_ import Modulo
+from .mul_ import Multiplication
+from .or_ import BitwiseOr
+from .rshift_ import RightShift
+from .sub_ import Subtraction
+from .xor_ import BitwiseXor

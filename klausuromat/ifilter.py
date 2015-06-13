@@ -1,5 +1,4 @@
-# Internals
-from identifier import Identifier
+from klausuromat.identifier import Identifier
 
 
 # A generic class to filter identifiers

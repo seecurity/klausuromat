@@ -1,9 +1,9 @@
 # Internals
-from operations import BinaryOperation
+from klausuromat import operations
 
 
 # Multiplication: [c = ]a * b
-class Multiplication(BinaryOperation):
+class Multiplication(operations.BinaryOperation):
     # Constructor
     def __init__(self, *args):
         # Do all the initializing stuff
@@ -11,15 +11,15 @@ class Multiplication(BinaryOperation):
 
         # Set filters
         self._filters = {
-            BinaryOperation.OperatorSide.ASSIGN: self._filter.is_number,
-            BinaryOperation.OperatorSide.LEFT: self._filter.is_number,
-            BinaryOperation.OperatorSide.RIGHT: self._filter.is_number
+            operations.BinaryOperation.OperatorSide.ASSIGN: self._filter.is_number,
+            operations.BinaryOperation.OperatorSide.LEFT: self._filter.is_number,
+            operations.BinaryOperation.OperatorSide.RIGHT: self._filter.is_number
         }
 
         # Set fallback numbers
         self._fallback = {
-            BinaryOperation.OperatorSide.LEFT: list(range(*self._settings['IDENTIFIER_VALUE_RANGE'])),
-            BinaryOperation.OperatorSide.RIGHT: list(range(*self._settings['IDENTIFIER_VALUE_RANGE']))
+            operations.BinaryOperation.OperatorSide.LEFT: list(range(*self._settings['IDENTIFIER_VALUE_RANGE'])),
+            operations.BinaryOperation.OperatorSide.RIGHT: list(range(*self._settings['IDENTIFIER_VALUE_RANGE']))
         }
 
     # Calculate

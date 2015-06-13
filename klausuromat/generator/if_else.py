@@ -1,12 +1,6 @@
-# Externals
 import copy
 
-# Internals
-import generator
-import exceptions
-import identifier
-import operations
-import copy
+from klausuromat import generator, exceptions, identifier, operations
 
 
 # Conditional statement generator

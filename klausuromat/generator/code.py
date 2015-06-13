@@ -1,4 +1,3 @@
-# Externals
 import logging
 import os
 import io
@@ -6,9 +5,7 @@ import json
 import tempfile
 import shutil
 
-# Internals
-import generator
-import exceptions
+from klausuromat import generator, exceptions
 
 # Helper (not needed in Python 3.3)
 import __future_subprocess as subprocess

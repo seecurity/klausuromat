@@ -1,9 +1,7 @@
-# Externals
 import logging
 import copy
 
-# Internals
-import generator
+from klausuromat import generator
 
 
 # Generator that can build (verifying) code but is not able to compile it

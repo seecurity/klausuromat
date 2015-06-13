@@ -1,16 +1,10 @@
-# Externals
 import logging
 import io
 import json
 import random
 import copy
 
-# Internals
-import generator
-import exceptions
-import operations
-import ifilter
-import identifier
+from klausuromat import generator, exceptions, operations, ifilter, identifier
 
 
 # Basic code generator that can build (verifying) code but is not able to compile it

@@ -21,22 +21,22 @@ Setup on a fresh Ubuntu 14.04 LTS Server:
 3. Set the rights:
    ```sh
    $ sudo chown -hR www-data:www-data klausuromat
-   $ sudo chown -hR www-data:www-data /var/www/html/includes
+   $ sudo chown -hR www-data:www-data /var/www/html/include
    ```
 
 4. Open the default web server config in your favorite editor, e.g.:
    ```sh
-   $ nano /etc/apache2/sites-enabled/000-default.conf
+   $ sudo nano /etc/apache2/sites-enabled/000-default.conf
    ```
 
    And append the following code into you main virtual host:
    ```
    ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
-           <Directory /usr/lib/cgi-bin>
-                   AllowOverride None
-                   Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
-                   Require all granted
-           </Directory>
+   <Directory /usr/lib/cgi-bin>
+       AllowOverride None
+       Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+       Require all granted
+   </Directory>
    ```
 
 5. Start cgi and restart apache:

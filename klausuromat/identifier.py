@@ -1,10 +1,7 @@
-# Externals
 import random
 import string
 
-# Internals
-import exceptions
-import enumerator
+from klausuromat import exceptions, enumerator
 
 
 # Identifier representation

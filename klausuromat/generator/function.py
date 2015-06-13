@@ -1,12 +1,6 @@
-# Externals
-import logging
 import random
 
-# Internals
-import generator
-import exceptions
-import identifier
-import operations
+from klausuromat import generator, exceptions, operations
 
 
 # Function generator

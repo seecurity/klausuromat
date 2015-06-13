@@ -1,20 +1,13 @@
-# External
 import random
 import string
 
-# Internal
-from identifier import Identifier
-import generator
-import exceptions
-import enumerator
-import operations
-import ifilter
+from klausuromat import identifier, generator, exceptions, enumerator, operations, ifilter
 
 
 # Random code generator that has the ability to verify it's own code
 class RandomCodeGenerator(generator.CodeGenerator):
     # All possible identifier
-    types = [Identifier.DataType.INT, Identifier.DataType.FLOAT]
+    types = [identifier.Identifier.DataType.INT, identifier.Identifier.DataType.FLOAT]
 
     # Predefined operator levels
     operator_levels = (
@@ -186,10 +179,10 @@ class RandomCodeGenerator(generator.CodeGenerator):
                 # Remove from list of identifiers and set it to call by reference
                 id_ = random.choice(ids)
                 ids.remove(id_)
-                id_.call_by = Identifier.CallBy.REFERENCE
+                id_.call_by = identifier.Identifier.CallBy.REFERENCE
             else:
                 # Remove from list of identifiers that will be called by reference
-                by_reference_ids = self._filter.apply(self._filter.is_called_by, ids, type_=Identifier.CallBy.REFERENCE)
+                by_reference_ids = self._filter.apply(self._filter.is_called_by, ids, type_=identifier.Identifier.CallBy.REFERENCE)
                 id_ = random.choice(list(by_reference_ids))
                 ids.remove(id_)
 
@@ -261,14 +254,14 @@ class RandomCodeGenerator(generator.CodeGenerator):
     # Generate identifiers while following the "one or more" rule
     def _generate_identifiers(self):
         # Set to call by value if function level is "by value"
-        call_by = Identifier.CallBy.VALUE if self._function_level == RandomCodeGenerator.FunctionLevel.BY_VALUE else None
+        call_by = identifier.Identifier.CallBy.VALUE if self._function_level == RandomCodeGenerator.FunctionLevel.BY_VALUE else None
 
         # Copy names and types
         types = RandomCodeGenerator.types[:]
 
         # Check if float is enabled
         if not self._float:
-            types.remove(Identifier.DataType.FLOAT)
+            types.remove(identifier.Identifier.DataType.FLOAT)
 
         # Tuple of possible pointer depths
         if self._pointer_level == RandomCodeGenerator.PointerLevel.NONE:
@@ -346,7 +339,7 @@ class RandomCodeGenerator(generator.CodeGenerator):
             # Turn off call by reference for pointers if pointer level is set to single references only
             # TODO dirty hack! doesn't matter as this system has been rewritten in branch array
             if id_ is not None and self._pointer_level == RandomCodeGenerator.PointerLevel.SINGLE_REFERENCES:
-                call_by = Identifier.CallBy.VALUE
+                call_by = identifier.Identifier.CallBy.VALUE
 
             # Add identifier to generator
             self.add_identifier(type_, name, reference=id_, call_by=call_by)

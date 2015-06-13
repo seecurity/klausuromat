@@ -1,9 +1,9 @@
 # Internals
-from operations import BinaryOperation
+from klausuromat import operations
 
 
 # Left shift: [c = ]a << b
-class LeftShift(BinaryOperation):
+class LeftShift(operations.BinaryOperation):
     # Constructor
     def __init__(self, *args):
         # Do all the initializing stuff
@@ -11,15 +11,15 @@ class LeftShift(BinaryOperation):
 
         # Set filters
         self._filters = {
-            BinaryOperation.OperatorSide.ASSIGN: self._filter.is_number,
-            BinaryOperation.OperatorSide.LEFT: self._filter.is_integer,
-            BinaryOperation.OperatorSide.RIGHT: self._filter.is_shift_counter
+            operations.BinaryOperation.OperatorSide.ASSIGN: self._filter.is_number,
+            operations.BinaryOperation.OperatorSide.LEFT: self._filter.is_integer,
+            operations.BinaryOperation.OperatorSide.RIGHT: self._filter.is_shift_counter
         }
 
         # Set fallback numbers
         self._fallback = {
-            BinaryOperation.OperatorSide.LEFT: list(range(*self._settings['IDENTIFIER_VALUE_RANGE'])),
-            BinaryOperation.OperatorSide.RIGHT: list(range(0, self._settings['MAX_SHIFT_BITS'] + 1))
+            operations.BinaryOperation.OperatorSide.LEFT: list(range(*self._settings['IDENTIFIER_VALUE_RANGE'])),
+            operations.BinaryOperation.OperatorSide.RIGHT: list(range(0, self._settings['MAX_SHIFT_BITS'] + 1))
         }
 
     # Calculate

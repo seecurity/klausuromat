@@ -1,5 +1,4 @@
-# Internals
-import enumerator
+from klausuromat import enumerator
 
 
 # Language class

@@ -1,12 +1,10 @@
-# Externals
 import copy
 
-# Internals
-from operations import BasicOperation
+from klausuromat import operations
 
 
 # A pseudo operation that exists to retrieve a snapshot of the current identifiers
-class Result(BasicOperation):
+class Result(operations.BasicOperation):
     # Constructor
     def __init__(self, *args):
         # Do all the initializing stuff

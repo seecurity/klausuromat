@@ -1,20 +1,16 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-# Externals
 import cgi
 import cgitb
 import codecs
 import sys
 import io
 import json
+
 from xml.sax.saxutils import escape
 
-# Internals
-import html
-import generator
-import exceptions
-import language
+from klausuromat import html, generator, exceptions, language
 
 __author__ = 'Lennart Grahl <lennart.grahl@gmail.com>'
 __status__ = 'Prototype'

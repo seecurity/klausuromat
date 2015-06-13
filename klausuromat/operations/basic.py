@@ -1,10 +1,6 @@
-# Externals
 import random
-import copy
 
-# Internals
-import exceptions
-import identifier
+from klausuromat import exceptions, identifier
 
 
 # Basic Operation that can be extended to represent an operation

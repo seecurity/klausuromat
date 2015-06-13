@@ -1,16 +1,11 @@
-# Externals
 import random
 import copy
 
-# Internals
-import exceptions
-import enumerator
-import identifier
-from operations import BasicOperation
+from klausuromat import exceptions, enumerator, identifier, operations, ifilter
 
 
 # Basic Operation that can be extended to represent an operation
-class BinaryOperation(BasicOperation):
+class BinaryOperation(operations.BasicOperation):
     OperatorSide = enumerator.Enum(ASSIGN=0, LEFT=1, RIGHT=2)
 
     # Constructor
@@ -149,7 +144,7 @@ class BinaryOperation(BasicOperation):
                     'Operand does not match filter(s):{}'.format(operand))
 
             # Operation: Check if this operation has already been assigned
-            elif isinstance(operand, BasicOperation) and operand._assign:
+            elif isinstance(operand, operations.BasicOperation) and operand._assign:
                 raise exceptions.GeneratorOperationNotPossibleError(
                     'Operand is an operation that has been assigned already')
 
