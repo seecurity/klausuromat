@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 # Externals
-import sys
 import io
 import json
 
@@ -13,13 +12,6 @@ import generator
 # Get settings
 with io.open('settings.json', mode='r', encoding='utf-8') as fd:
     settings = json.load(fd)
-
-# Remote debugging
-if settings['REMOTE_DEBUG']:
-    sys.path.append('/home/vbox/pycharm/pycharm-debug-py3k.egg')
-    import pydevd
-
-    pydevd.settrace('192.168.56.1', port=22222, stdoutToServer=True, stderrToServer=True)
 
 # Create random code generator
 gen = generator.RandomCodeGenerator()

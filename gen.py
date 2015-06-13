@@ -45,13 +45,6 @@ debug = settings['DEBUG']
 if debug:
     cgitb.enable()
 
-# Remote debugging
-if settings['REMOTE_DEBUG']:
-    sys.path.append('/home/vbox/pycharm/pycharm-debug-py3k.egg')
-    import pydevd
-
-    pydevd.settrace('192.168.56.1', port=22222, stdoutToServer=True, stderrToServer=True)
-
 # Get version
 version = settings['VERSION']
 
