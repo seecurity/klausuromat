@@ -6,10 +6,8 @@ import tempfile
 import shutil
 
 from klausuromat import exceptions
+from klausuromat import __future_subprocess as subprocess
 from .basic import BasicGenerator
-
-# Helper (not needed in Python 3.3)
-import __future_subprocess as subprocess
 
 
 # Code generator that has the ability to verify it's own code
