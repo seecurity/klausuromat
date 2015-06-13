@@ -323,6 +323,7 @@ class BasicGenerator:
     # Append code pieces of all operations inside to a specified key
     def _code_pieces_operations(self, code, operations_, key='main', block=True):
         from .child import GeneratorChild
+        from .function import FunctionGenerator
 
         # Start verify block
         if block and self._options.get('verify'):
