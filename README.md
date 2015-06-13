@@ -21,6 +21,7 @@ Setup on a fresh Ubuntu 14.04 LTS Server:
 3. Set the rights:
    ```sh
    $ sudo chown -hR www-data:www-data klausuromat
+   $ sudo chmod a+x klausuromat/gen.py
    $ sudo chown -hR www-data:www-data /var/www/html/include
    ```
 
