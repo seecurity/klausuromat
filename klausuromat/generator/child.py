@@ -1,12 +1,12 @@
 import logging
 import copy
 
-from klausuromat import generator
+from .basic import BasicGenerator
 
 
 # Generator that can build (verifying) code but is not able to compile it
 # This is an interface for child classes that can be added to a BasicGenerator
-class GeneratorChild(generator.BasicGenerator):
+class GeneratorChild(BasicGenerator):
     # Initialize
     #noinspection PyProtectedMember,PyMissingConstructor
     def __init__(self, settings, language, filter_, parent):

@@ -5,14 +5,15 @@ import json
 import tempfile
 import shutil
 
-from klausuromat import generator, exceptions
+from klausuromat import exceptions
+from .basic import BasicGenerator
 
 # Helper (not needed in Python 3.3)
 import __future_subprocess as subprocess
 
 
 # Code generator that has the ability to verify it's own code
-class CodeGenerator(generator.BasicGenerator):
+class CodeGenerator(BasicGenerator):
     # Initialize
     def __init__(self, *args):
         # Let parent class do all the initializing stuff

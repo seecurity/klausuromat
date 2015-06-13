@@ -4,7 +4,10 @@ import json
 import random
 import copy
 
-from klausuromat import generator, exceptions, operations, ifilter, identifier
+from klausuromat import exceptions, operations, ifilter, identifier
+from .child import GeneratorChild
+from .function import FunctionGenerator
+from .if_else import ConditionalGenerator
 
 
 # Basic code generator that can build (verifying) code but is not able to compile it
@@ -77,12 +80,12 @@ class BasicGenerator:
             ids = self._sample_identifiers(self._settings['FUNCTION_IDENTIFIER_RANGE'], ids)
 
         # Create function generator and return
-        return self._add_child(generator.FunctionGenerator, ids=ids, name=name)
+        return self._add_child(FunctionGenerator, ids=ids, name=name)
 
     # Add conditional generator and return instance
     def add_conditional(self):
         # Create conditional generator and return
-        return self._add_child(generator.ConditionalGenerator)
+        return self._add_child(ConditionalGenerator)
 
     # Do a random operation
     # Note: No configuration possible on an operation, therefore there is no return
@@ -178,7 +181,7 @@ class BasicGenerator:
     def compare_identifiers(self, all_ids):
         # Retrieve operations that have a result or are a generator
         operations_ = [operation for operation in self._operations
-                       if hasattr(operation, 'result') or isinstance(operation, generator.GeneratorChild)]
+                       if hasattr(operation, 'result') or isinstance(operation, GeneratorChild)]
 
         # Compare amount of operations
         if len(operations_) != len(all_ids):
@@ -193,7 +196,7 @@ class BasicGenerator:
             operation, real = ids
 
             # Operation is another generator
-            if isinstance(operation, generator.GeneratorChild):
+            if isinstance(operation, GeneratorChild):
                 if not operation.compare_identifiers(real):
                     return False
 
@@ -326,11 +329,11 @@ class BasicGenerator:
         for i, operation in enumerate(operations_):
             # Add separator (if not a function)
             # Note: This is quite nasty... but necessary to avoid JSON corruption
-            if i > 0 and self._options.get('verify') and not isinstance(operation, generator.FunctionGenerator):
+            if i > 0 and self._options.get('verify') and not isinstance(operation, FunctionGenerator):
                 code[key].append(self._code_pieces_verify_separator())
 
             # Generator (child)
-            if isinstance(operation, generator.GeneratorChild):
+            if isinstance(operation, GeneratorChild):
                 # Append code of child generator
                 self._code_pieces_child(code, operation)
 

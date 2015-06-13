@@ -1,11 +1,14 @@
 import random
 import string
 
-from klausuromat import identifier, generator, exceptions, enumerator, operations, ifilter
+from klausuromat import identifier, exceptions, enumerator, operations, ifilter
+from .code import CodeGenerator
+from .function import FunctionGenerator
+from .if_else import ConditionalGenerator
 
 
 # Random code generator that has the ability to verify it's own code
-class RandomCodeGenerator(generator.CodeGenerator):
+class RandomCodeGenerator(CodeGenerator):
     # All possible identifier
     types = [identifier.Identifier.DataType.INT, identifier.Identifier.DataType.FLOAT]
 
@@ -66,13 +69,13 @@ class RandomCodeGenerator(generator.CodeGenerator):
         # Generator information
         self._generators = {
             RandomCodeGenerator.GeneratorSlot.FUNCTION: (
-                generator.FunctionGenerator,
+                FunctionGenerator,
                 lambda: self._function_level != RandomCodeGenerator.FunctionLevel.NONE,
                 self._settings['FUNCTION_CHANCE'],
                 self._settings['FUNCTION_AMOUNT_MAX']
             ),
             RandomCodeGenerator.GeneratorSlot.CONDITIONAL: (
-                generator.ConditionalGenerator,
+                ConditionalGenerator,
                 lambda: self._conditionals,
                 self._settings['CONDITIONAL_AMOUNT_MAX'],
                 self._settings['CONDITIONAL_CHANCE']
@@ -382,7 +385,7 @@ class RandomCodeGenerator(generator.CodeGenerator):
             gen = self._generator_required(slots[i])
 
             # Function slot
-            if gen == generator.FunctionGenerator:
+            if gen == FunctionGenerator:
                 # Add function
                 func = self.add_function()
 
@@ -398,7 +401,7 @@ class RandomCodeGenerator(generator.CodeGenerator):
                     func.call()
 
             # Conditional slot
-            elif gen == generator.ConditionalGenerator:
+            elif gen == ConditionalGenerator:
                 # Add conditional statement
                 conditional = self.add_conditional()
 
@@ -481,4 +484,4 @@ class RandomCodeGenerator(generator.CodeGenerator):
 
     # Count function generators that have a return value
     def _count_functions_returning(self):
-        return sum(1 for op in self._operations if isinstance(op, generator.FunctionGenerator) and op.return_)
+        return sum(1 for op in self._operations if isinstance(op, FunctionGenerator) and op.return_)

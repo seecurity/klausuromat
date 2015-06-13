@@ -1,10 +1,11 @@
 import random
 
-from klausuromat import generator, exceptions, operations
+from klausuromat import exceptions, operations
+from .child import GeneratorChild
 
 
 # Function generator
-class FunctionGenerator(generator.GeneratorChild):
+class FunctionGenerator(GeneratorChild):
     # Function names
     names = [
         'kirk', 'spock', 'mccoy', 'scott', 'sulu', 'uhura', 'chekov', 'chapel',

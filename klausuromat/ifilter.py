@@ -1,11 +1,16 @@
-from klausuromat.identifier import Identifier
+from klausuromat import identifier
 
 
 # A generic class to filter identifiers
 class IdentifierFilter:
     # Data types that are numbers
-    numbers = (Identifier.DataType.INT, Identifier.DataType.CHAR, Identifier.DataType.FLOAT, Identifier.DataType.DOUBLE)
-    integers = (Identifier.DataType.INT, Identifier.DataType.CHAR)
+    numbers = (
+        identifier.Identifier.DataType.INT, identifier.Identifier.DataType.CHAR,
+        identifier.Identifier.DataType.FLOAT, identifier.Identifier.DataType.DOUBLE
+    )
+    integers = (
+        identifier.Identifier.DataType.INT, identifier.Identifier.DataType.CHAR
+    )
 
     # Constructor
     def __init__(self, settings):
@@ -74,5 +79,5 @@ class IdentifierFilter:
 
     # Retrieve identifiers that will be called by a specific type
     def is_called_by(self, a, type_=None, **_):
-        return (type_ == Identifier.CallBy.VALUE and not a.called_by_reference) or \
-               (type_ == Identifier.CallBy.REFERENCE and a.called_by_reference)
+        return (type_ == identifier.Identifier.CallBy.VALUE and not a.called_by_reference) or \
+               (type_ == identifier.Identifier.CallBy.REFERENCE and a.called_by_reference)

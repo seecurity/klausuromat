@@ -1,10 +1,11 @@
 import copy
 
-from klausuromat import generator, exceptions, identifier, operations
+from klausuromat import exceptions, identifier, operations
+from .child import GeneratorChild
 
 
 # Conditional statement generator
-class ConditionalGenerator(generator.GeneratorChild):
+class ConditionalGenerator(GeneratorChild):
     # Initialize
     def __init__(self, ids, settings, language, filter_, parent):
         # Let parent class do all the initializing stuff
