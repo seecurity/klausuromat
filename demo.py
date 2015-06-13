@@ -8,6 +8,10 @@ import json
 # Internals
 import generator
 
+__author__ = 'Lennart Grahl <lennart.grahl@gmail.com>'
+__status__ = 'Prototype'
+__version__ = '1.0.0'
+
 
 # Get settings
 with io.open('settings.json', mode='r', encoding='utf-8') as fd:
