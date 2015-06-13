@@ -5,8 +5,6 @@ import random
 import copy
 
 from klausuromat import exceptions, operations, ifilter, identifier
-from .function import FunctionGenerator
-from .if_else import ConditionalGenerator
 
 
 # Basic code generator that can build (verifying) code but is not able to compile it
@@ -79,11 +77,13 @@ class BasicGenerator:
             ids = self._sample_identifiers(self._settings['FUNCTION_IDENTIFIER_RANGE'], ids)
 
         # Create function generator and return
+        from .function import FunctionGenerator
         return self._add_child(FunctionGenerator, ids=ids, name=name)
 
     # Add conditional generator and return instance
     def add_conditional(self):
         # Create conditional generator and return
+        from .if_else import ConditionalGenerator
         return self._add_child(ConditionalGenerator)
 
     # Do a random operation
