@@ -52,5 +52,3 @@ $ sudo service apache2 reload
 
 6) Done. Your instance of `klausuromat` is now reachable at ``http://yourIP/cgi-bin/klausuromat/gen.py``
 You may want to tell your web server to open ``gen.py`` in that directory as index file.
-
-

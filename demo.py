@@ -1,21 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-# Externals
-import io
-import json
-
-# Internals
-import generator
-
-__author__ = 'Lennart Grahl <lennart.grahl@gmail.com>'
-__status__ = 'Prototype'
-__version__ = '1.0.0'
-
-
-# Get settings
-with io.open('settings.json', mode='r', encoding='utf-8') as fd:
-    settings = json.load(fd)
+from klausuromat import generator
 
 # Create random code generator
 gen = generator.RandomCodeGenerator()
