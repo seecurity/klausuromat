@@ -14,7 +14,7 @@ from klausuromat import html, generator, exceptions, language
 
 __author__ = 'Lennart Grahl <lennart.grahl@gmail.com>'
 __status__ = 'Prototype'
-__version__ = '1.1.3'
+__version__ = '1.1.4'
 
 
 # Extend field storage
