@@ -1,10 +1,10 @@
 import copy
 
-from klausuromat import operations
+from .basic import BasicOperation
 
 
 # Initialization & definition of predefined identifiers
-class Initialize(operations.BasicOperation):
+class Initialize(BasicOperation):
     # Constructor
     def __init__(self, *args):
         # Do all the initializing stuff

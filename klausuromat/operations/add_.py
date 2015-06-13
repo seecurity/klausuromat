@@ -1,8 +1,8 @@
-from klausuromat import operations
+from .binary import BinaryOperation
 
 
 # Addition: [c = ]a + b
-class Addition(operations.BinaryOperation):
+class Addition(BinaryOperation):
     # Constructor
     def __init__(self, *args):
         # Do all the initializing stuff
@@ -10,15 +10,15 @@ class Addition(operations.BinaryOperation):
 
         # Set filters
         self._filters = {
-            operations.BinaryOperation.OperatorSide.ASSIGN: self._filter.is_number,
-            operations.BinaryOperation.OperatorSide.LEFT: self._filter.is_number,
-            operations.BinaryOperation.OperatorSide.RIGHT: self._filter.is_number
+            BinaryOperation.OperatorSide.ASSIGN: self._filter.is_number,
+            BinaryOperation.OperatorSide.LEFT: self._filter.is_number,
+            BinaryOperation.OperatorSide.RIGHT: self._filter.is_number
         }
 
         # Set fallback numbers
         self._fallback = {
-            operations.BinaryOperation.OperatorSide.LEFT: list(range(*self._settings['IDENTIFIER_VALUE_RANGE'])),
-            operations.BinaryOperation.OperatorSide.RIGHT: list(range(*self._settings['IDENTIFIER_VALUE_RANGE']))
+            BinaryOperation.OperatorSide.LEFT: list(range(*self._settings['IDENTIFIER_VALUE_RANGE'])),
+            BinaryOperation.OperatorSide.RIGHT: list(range(*self._settings['IDENTIFIER_VALUE_RANGE']))
         }
 
     # Calculate

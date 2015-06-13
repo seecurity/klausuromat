@@ -1,9 +1,9 @@
 # Internals
-from klausuromat import operations
+from .binary import BinaryOperation
 
 
 # Less than (or equal): [c = ]a <= b
-class LessThanOrEqual(operations.BinaryOperation):
+class LessThanOrEqual(BinaryOperation):
     # Constructor
     def __init__(self, *args):
         # Do all the initializing stuff
@@ -11,15 +11,15 @@ class LessThanOrEqual(operations.BinaryOperation):
 
         # Set filters
         self._filters = {
-            operations.BinaryOperation.OperatorSide.ASSIGN: self._filter.is_number,
-            operations.BinaryOperation.OperatorSide.LEFT: self._filter.is_integer,
-            operations.BinaryOperation.OperatorSide.RIGHT: self._filter.is_integer
+            BinaryOperation.OperatorSide.ASSIGN: self._filter.is_number,
+            BinaryOperation.OperatorSide.LEFT: self._filter.is_integer,
+            BinaryOperation.OperatorSide.RIGHT: self._filter.is_integer
         }
 
         # Set fallback numbers
         self._fallback = {
-            operations.BinaryOperation.OperatorSide.LEFT: list(range(*self._settings['IDENTIFIER_VALUE_RANGE'])),
-            operations.BinaryOperation.OperatorSide.RIGHT: list(range(*self._settings['IDENTIFIER_VALUE_RANGE']))
+            BinaryOperation.OperatorSide.LEFT: list(range(*self._settings['IDENTIFIER_VALUE_RANGE'])),
+            BinaryOperation.OperatorSide.RIGHT: list(range(*self._settings['IDENTIFIER_VALUE_RANGE']))
         }
 
     # Calculate

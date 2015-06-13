@@ -1,10 +1,10 @@
 import copy
 
-from klausuromat import operations
+from .basic import BasicOperation
 
 
 # A pseudo operation that exists to retrieve a snapshot of the current identifiers
-class Result(operations.BasicOperation):
+class Result(BasicOperation):
     # Constructor
     def __init__(self, *args):
         # Do all the initializing stuff

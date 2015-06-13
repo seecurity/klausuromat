@@ -1,11 +1,12 @@
 import copy
 
-from klausuromat import operations, exceptions
+from klausuromat import exceptions
+from .basic import BasicOperation
 
 
 # A function call operation
 # Result can be assigned to an identifier that can be chosen randomly
-class Call(operations.BasicOperation):
+class Call(BasicOperation):
     # Constructor
     def __init__(self, *args):
         # Do all the initializing stuff
@@ -16,7 +17,7 @@ class Call(operations.BasicOperation):
         self._code = None
 
         # Set assignment filter
-        self._filters[operations.BasicOperation.OperatorAssign] = [self._filter.has_type, self._filter.has_reference_depth]
+        self._filters[BasicOperation.OperatorAssign] = [self._filter.has_type, self._filter.has_reference_depth]
 
     # Save code pieces that represent the function call
     call = property(lambda self: self._code, lambda self, value: setattr(self, '_code', value))
