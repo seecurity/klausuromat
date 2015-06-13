@@ -15,8 +15,13 @@ Setup on a fresh Ubuntu 14.04 LTS Server:
    $ sudo cp -R klausuromat/include /var/www/html/
    ```
 
-2. Open the file [settings.json](/settings.json) and edit the log-files according to your needs. The include directory should be set to
-   ``../../include``.
+2. Open the file [settings.json](/settings.json) and edit the log and temp file settings according to your needs.
+   The include directory should be set to ``../../include``.
+   
+   If you do not change the log and temp file settings, you should create the default directories:
+   ```sh
+   $ sudo mkdir klausuromat/log klausuromat/temp
+   ```
 
 3. Set the rights:
    ```sh
