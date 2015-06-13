@@ -16,6 +16,10 @@ import generator
 import exceptions
 import language
 
+__author__ = 'Lennart Grahl <lennart.grahl@gmail.com>'
+__status__ = 'Prototype'
+__version__ = '1.1.3'
+
 
 # We need to overwrite stdout due to stupidity of the cgi module
 sys.stdout = codecs.getwriter('utf8')(sys.stdout.buffer)
@@ -44,9 +48,6 @@ debug = settings['DEBUG']
 # Debug: Show exceptions as HTML code
 if debug:
     cgitb.enable()
-
-# Get version
-version = settings['VERSION']
 
 # Get fields
 post = FieldStorage()
@@ -232,5 +233,5 @@ includes = [
 print('Content-Type: text/html;charset=utf-8\n\n', html.html.format({
     'title':    '{:klausuromat}'.format(L),
     'includes': '\n'.join(includes),
-    'content':  content.format(L, form, version)
+    'content':  content.format(L, form, __version__)
 }))
