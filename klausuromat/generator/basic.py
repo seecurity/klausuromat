@@ -5,7 +5,6 @@ import random
 import copy
 
 from klausuromat import exceptions, operations, ifilter, identifier
-from .child import GeneratorChild
 from .function import FunctionGenerator
 from .if_else import ConditionalGenerator
 
@@ -179,6 +178,8 @@ class BasicGenerator:
 
     # Compare identifiers with internal stored identifiers
     def compare_identifiers(self, all_ids):
+        from .child import GeneratorChild
+
         # Retrieve operations that have a result or are a generator
         operations_ = [operation for operation in self._operations
                        if hasattr(operation, 'result') or isinstance(operation, GeneratorChild)]
@@ -321,6 +322,8 @@ class BasicGenerator:
 
     # Append code pieces of all operations inside to a specified key
     def _code_pieces_operations(self, code, operations_, key='main', block=True):
+        from .child import GeneratorChild
+
         # Start verify block
         if block and self._options.get('verify'):
             code[key].append(self._code_pieces_verify_start())
