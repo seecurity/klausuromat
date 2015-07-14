@@ -1,7 +1,5 @@
 {
     "DEBUG":                            false,
-    "REMOTE_DEBUG":                     false,
-    "VERSION":                          "1.1.3",
 
     "IDENTIFIER_AMOUNT_RANGE":          [5, 7],
     "IDENTIFIER_VALUE_RANGE":           [-9, 21],
@@ -27,9 +25,9 @@
 
     "COMPILE_TIMEOUT":                  3,
     "EXECUTE_TIMEOUT":                  3,
-    "INCLUDE_DIRECTORY":                "../../~grahl",
-    "TEMP_DIRECTORY":                   "/home/grahl/temp",
+    "INCLUDE_DIRECTORY":                "../../include",
+    "TEMP_DIRECTORY":                   "temp",
     "LOG_FILENAME":                     "error.log",
-    "LOG_DIRECTORY":                    "/home/grahl/log",
+    "LOG_DIRECTORY":                    "log",
     "ENV_PATH":                         "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin"
 }
