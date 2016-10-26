@@ -2,6 +2,9 @@
 
 `Klausuromat` is a tool written in Python 3 that automatically generates source code reading exercises for the C programming language.
 
+## Test system
+https://www.its.fh-muenster.de/cgi-bin/klausuromat/gen.py
+
 ## Installation
 
 Setup on a fresh Ubuntu 14.04 LTS Server:
