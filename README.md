@@ -7,7 +7,7 @@ http://klausuromat.de/
 
 ## Installation
 
-Setup on a fresh Ubuntu 14.04 LTS Server:
+Setup on a fresh Ubuntu Server:
 
 1. Install the tools and copy files to the final locations
    ```sh
